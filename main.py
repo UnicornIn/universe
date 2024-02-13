@@ -39,3 +39,16 @@ async def read_customers():
     )
     customers = wcapi.get("customers").json()
     return customers
+
+@app.get("/orders")
+async def read_orders():
+    wcapi = API(
+        url="https://rizosfelices.co",
+        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
+        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
+        version="wc/v3"
+    )
+    
+    orders = wcapi.get("orders").json()
+    
+    return orders
