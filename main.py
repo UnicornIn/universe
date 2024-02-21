@@ -1,7 +1,17 @@
+from fastapi import FastAPI, Request, Form
+from fastapi.templating import Jinja2Templates
+from starlette.responses import RedirectResponse
+from starlette.status import HTTP_302_FOUND
 from fastapi import FastAPI
 from woocommerce import API
 
 app = FastAPI()
+
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/")
+def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/")
 async def read_root():
