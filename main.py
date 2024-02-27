@@ -1,16 +1,31 @@
+from fastapi import FastAPI, Request, HTTPException
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import HTMLResponse
 from woocommerce import API
 from database.connection import execute_query
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+wcapi = API(
+        url="https://rizosfelices.co",
+        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
+        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
+        version="wc/v3",
+    )
 
-@app.get("/")
-def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
+@app.get("/dashboard", response_class=HTMLResponse)
+async def show_dashboard(request: Request):
+    
+        # Obtén datos de la API de WooCommerce (aquí obtengo productos como ejemplo)
+        products = wcapi.get("products").json()
+        orders = wcapi.get("orders").json()
+        customers = wcapi.get("customers").json()
 
+        # Renderiza el template del dashboard con los datos
+        return templates.TemplateResponse("dashboard.html", {"request": request, "products": products,"orders": orders, "customers": customers})
+        
 
 @app.get("/")
 async def read_root():
@@ -84,6 +99,7 @@ async def read_orders():
         consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
         version="wc/v3",
     )
+
 
     orders = wcapi.get("orders").json()
 

@@ -43,6 +43,44 @@
             text-align: center;
         }
 
+        .recent-payments {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .title {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .title h2 {
+            color: #333;
+            font-size: 18px;
+        }
+
+        .woocommerce-data ul {
+            padding: 10px 0;
+        }
+
+        .woocommerce-data ul li {
+            padding: 5px 0;
+            border-bottom: 1px solid #ddd;
+            list-style: none;
+        }
+
+        .woocommerce-data ul li a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .woocommerce-data ul li a:hover {
+            text-decoration: underline;
+        }
+
+
         .btn:hover {
             color: #f05462;
             background: white;
@@ -363,52 +401,57 @@
                     </div>
                     <div class="woocommerce-data">
                         <ul>
-                            {% for customer in woocommerce_customers %}
-                                <li>{{ customer.first_name }} {{ customer.last_name }} - {{ customer.email }}</li>
-                            {% endfor %}
+                            {% for order in orders %}
+                                <li>ID de Orden: {{ order.id }}</li>
+                                <li>Cliente: {{ order.billing.first_name }} {{ order.billing.last_name }}</li>
+                                <li>Email del Cliente: {{ order.billing.email }}</li>
+                                <li>Teléfono del Cliente: {{ order.billing.phone }}</li>
+                                <hr>
+                                {% endfor %}
                         </ul>
                     </div>
                 </div>
-                  </div>
-                </div>
-                <div class="new-students">
-                    <div class="title">
-                        <h2>New Students</h2>
-                        <a href="#" class="btn">View All</a>
-                    </div>
-                    <table>
-                        <tr>
-                            <th>Profile</th>
-                            <th>Name</th>
-                            <th>option</th>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                        <tr>
-                            <td><img src="user.png" alt=""></td>
-                            <td>John Steve Doe</td>
-                            <td><img src="info.png" alt=""></td>
-                        </tr>
-                    </table>
-                </div>
+                  
             </div>
         </div>
+        <div class="new-students">
+            <div class="title">
+                <h2>New Students</h2>
+                <a href="#" class="btn">View All</a>
+            </div>
+            <table>
+                <tr>
+                    <th>Profile</th>
+                    <th>Name</th>
+                    <th>option</th>
+                </tr>
+                <tr>
+                    <td><img src="user.png" alt=""></td>
+                    <td>John Steve Doe</td>
+                    <td><img src="info.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="user.png" alt=""></td>
+                    <td>John Steve Doe</td>
+                    <td><img src="info.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="user.png" alt=""></td>
+                    <td>John Steve Doe</td>
+                    <td><img src="info.png" alt=""></td>
+                </tr>
+                <tr>
+                    <td><img src="user.png" alt=""></td>
+                    <td>John Steve Doe</td>
+                    <td><img src="info.png" alt=""></td>
+                </tr>
+            </table>
+        </div>
     </div>
-    
-    
+    </div>
+    </div>
+
+
 </body>
 
 </html>
