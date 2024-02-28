@@ -1,457 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universe</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DASBOARD</title>
+
+    <!-- FUENTE GOOGLE FONTS : Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        :root {
+            --color-1: #161719;
+            --color-2: #874fff;
+            --color-3: #f0f0f1;
+            --color-4: #383838;
+            --color5: #d3d3d3;
+        }
+
         * {
-            margin: 0;
             padding: 0;
+            margin: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            color: #F4A9C4;
         }
 
         body {
-            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        ol,
+        ul {
+            list-style: none;
         }
 
         a {
             text-decoration: none;
         }
 
-        li {
-            list-style: none;
-        }
-
-        h1,
-        h2 {
-            color: #444;
-        }
-
-        h3 {
-            color: #999;
-        }
-
-        .btn {
-            background: #1A1A1A;
-            color: white;
-            padding: 5px 10px;
-            text-align: center;
+        /* Stylos de Recent Users */
+        .content-2 {
+            padding: 20px;
         }
 
         .recent-payments {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f5f5f5;
-            border: 1px solid #ddd;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            padding: 20px;
+            background-color: #f9f9f9;
         }
 
         .title {
-            padding: 5px 0;
-            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
         }
 
         .title h2 {
             color: #333;
-            font-size: 18px;
+            font-size: 24px;
+            margin: 0;
         }
 
         .woocommerce-data ul {
-            padding: 10px 0;
+            list-style: none;
+            padding: 0;
         }
 
         .woocommerce-data ul li {
-            padding: 5px 0;
-            border-bottom: 1px solid #ddd;
-            list-style: none;
+            margin-bottom: 10px;
+            color: #666;
         }
 
-        .woocommerce-data ul li a {
-            color: #007bff;
-            text-decoration: none;
+        .woocommerce-data ul li:nth-child(even) {
+            background-color: #fafafa;
         }
 
-        .woocommerce-data ul li a:hover {
-            text-decoration: underline;
+        .woocommerce-data ul li hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin: 10px 0;
         }
 
+        /* Estilos de el dashboard en si */
 
-        .btn:hover {
-            color: #f05462;
-            background: white;
-            padding: 3px 8px;
-            border: 2px solid #f05462;
-        }
 
-        .title {
+        .admin-dashboard {
+            position: relative;
             display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 15px 10px;
-            border-bottom: 2px solid #999;
         }
 
-        table {
-            padding: 10px;
-        }
-
-        th,
-        td {
-            text-align: left;
-            padding: 8px;
-        }
-
-        .side-menu {
-            position: fixed;
-            background: #1A1A1A;
-            width: 20vw;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .side-menu .brand-name {
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .side-menu li {
-            font-size: 24px;
-            padding: 10px 40px;
-            color: white;
-            display: flex;
-            align-items: center;
-        }
-
-        .side-menu li:hover {
-            background: white;
-            color: #f05462;
-        }
-
-        .container {
-            position: absolute;
-            right: 0;
-            width: 80vw;
+        .ds-left-menu {
+            background: var(--color-1);
             height: 100vh;
-            background: #f1f1f1;
+            color: #fff;
+            width: 250px;
+            position: relative;
+            padding: 0px 20px;
+
+            transition: margin-left .3s ease-in-out, width .3s ease-in-out;
+
         }
 
-        .container .header {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 80vw;
-            height: 10vh;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            z-index: 1;
+        .ds-left-menu.menu-active {
+            width: 80px;
+            padding: 0px 10px;
         }
 
-        .container .header .nav {
-            width: 90%;
-            display: flex;
-            align-items: center;
-        }
-
-        .container .header .nav .search {
-            flex: 3;
-            display: flex;
+        .ds-left-menu.menu-active .ds-perfil {
             justify-content: center;
         }
 
-        .container .header .nav .search input[type=text] {
+        .ds-left-menu.menu-active .ds-perfil .info-perfil {
+            display: none;
+        }
+
+        .ds-left-menu.menu-active ul li a span,
+        .ds-left-menu.menu-active .sign-off a span {
+            visibility: hidden;
+            display: none;
+        }
+
+        .ds-left-menu.menu-active ul li a i,
+        .ds-left-menu.menu-active .sign-off a i {
+            margin-right: 0;
+        }
+
+        .ds-left-menu.menu-active .sign-off {
+            width: calc(100% - 20px);
+        }
+
+        .ds-left-menu.menu-active .sign-off a,
+        .ds-left-menu.menu-active ul li a {
+            text-align: center;
+        }
+
+        .btn-menu {
+            position: absolute;
+            background: var(--color-2);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 50%;
             border: none;
-            background: #f1f1f1;
+            top: 10px;
+            right: -16px;
+            font-size: 16px;
+            z-index: 100;
+        }
+
+        .ds-menu {
+            width: 100%;
+            overflow-x: scroll;
+            height: 100%;
+            padding-bottom: 150px;
+            padding-top: 20px;
+            border-top: 1px solid #252628;
+        }
+
+        .ds-menu ul li {
+            position: relative;
+        }
+
+        .ds-menu ul li a {
+            cursor: pointer;
+            color: var(--color5);
+            background: transparent;
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
             padding: 10px;
-            width: 50%;
+            border-radius: 4px;
+
         }
 
-        .container .header .nav .search button {
-            width: 40px;
-            height: 40px;
-            border: none;
+        .ds-menu ul li a:hover {
+            background: var(--color-2);
+            color: #fff;
+        }
+
+        .ds-menu ul li a i {
+            margin-right: 10px;
+        }
+
+        .ds-menu::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        .ds-menu::-webkit-scrollbar:vertical {
+            width: 10px;
+        }
+
+        .ds-menu::-webkit-scrollbar-button:increment,
+        .ds-menu::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        .ds-menu::-webkit-scrollbar:horizontal {
+            height: 10px;
+        }
+
+        .ds-menu::-webkit-scrollbar-thumb {
+            background-color: #4f486e;
+            border-radius: 20px;
+            border: 2px solid var(--color-1);
+        }
+
+        .ds-menu::-webkit-scrollbar-track {
+            border-radius: 10px;
+        }
+
+        .ds-perfil {
             display: flex;
             align-items: center;
-            justify-content: center;
+            padding: 20px 0px;
         }
 
-        .container .header .nav .search button img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .container .header .nav .user {
-            flex: 1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .container .header .nav .user img {
-            width: 40px;
-            height: 40px;
-        }
-
-        .container .header .nav .user .img-case {
+        .ds-perfil .foto {
             position: relative;
             width: 50px;
             height: 50px;
+            border-radius: 50%;
+            border: 3px solid #525252;
         }
 
-        .container .header .nav .user .img-case img {
+        .ds-perfil .foto::after {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            width: 10px;
+            height: 10px;
+            background: green;
+            bottom: 0;
+            right: 0;
+            border-radius: 50%;
+        }
+
+
+        .ds-perfil .foto img {
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        .container .content {
-            position: relative;
-            margin-top: 10vh;
-            min-height: 90vh;
-            background: #f1f1f1;
+        .ds-perfil .info-perfil {
+            padding-left: 10px;
         }
 
-        .container .content .cards {
-            padding: 20px 15px;
+        .ds-perfil .info-perfil span {
+            font-size: 12px;
+            color: #bcbcbd;
+        }
+
+        .ds-perfil .info-perfil h3 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-top: -5px;
+        }
+
+        .sign-off {
+            position: absolute;
+            bottom: 0;
+            background: var(--color-1);
+            width: calc(100% - 40px);
+            margin: auto;
+            border-top: 1px solid #252628;
+            padding: 15px 0px;
+        }
+
+        .sign-off a.btn-sign-off {
+            cursor: pointer;
+            color: var(--color5);
+            background: transparent;
+            width: 100%;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .sign-off a.btn-sign-off:hover {
+            background: #dd4b39;
+            color: #fff;
+        }
+
+        .sign-off a.btn-sign-off i {
+            margin-right: 10px;
+            transform: rotate(180deg);
+        }
+
+        /*===================================
+    ESTILOS PANEL RIGHT
+===================================*/
+        .ds-panel {
+            width: calc(100% - 250px);
+            padding: 20px;
+            background: var(--color-3);
+        }
+
+        .ds-panel.tab-menu {
+            width: calc(100% - 80px);
+        }
+
+        .ds-panel .panel-header {
+            width: 100%;
+            background: #fff;
+            padding: 4px;
+            border-radius: 4px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
 
-        .container .content .cards .card {
-            width: 250px;
-            height: 150px;
-            background: white;
-            margin: 20px 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        .ds-panel .panel-header .icono {
+            width: 50px;
+            line-height: 50px;
+            height: 50px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 25px;
+            margin-right: 10px;
+            color: var(--color-2);
+            background: #874fff1f;
         }
 
-        .container .content .content-2 {
-            min-height: 60vh;
-            display: flex;
-            justify-content: space-around;
-            align-items: flex-start;
-            flex-wrap: wrap;
+        .ds-panel .panel-header h2 {
+            font-size: 22px;
+            font-weight: 400;
+            color: var(--color-4);
         }
 
-        .container .content .content-2 .recent-payments {
-            min-height: 50vh;
-            flex: 5;
-            background: white;
-            margin: 0 25px 25px 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            display: flex;
-            flex-direction: column;
+        .ds-panel-content {
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
         }
 
-        .container .content .content-2 .new-students {
-            flex: 2;
-            background: white;
-            min-height: 50vh;
-            margin: 0 25px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            display: flex;
-            flex-direction: column;
+        .ds-menu ul li a:hover {
+            background: var(--color-2);
+            color: #fff;
         }
 
-        .container .content .content-2 .new-students table td:nth-child(1) img {
-            height: 40px;
-            width: 40px;
+        .customer-table {
+            width: 100%;
+            border-collapse: collapse;
         }
 
-        @media screen and (max-width: 1050px) {
-            .side-menu li {
-                font-size: 18px;
-            }
+        .customer-table th,
+        .customer-table td {
+            border: 1px solid #ccc;
+            padding: 8px;
         }
 
-        @media screen and (max-width: 940px) {
-            .side-menu li span {
-                display: none;
-            }
-
-            .side-menu {
-                align-items: center;
-            }
-
-            .side-menu li img {
-                width: 40px;
-                height: 40px;
-            }
-
-            .side-menu li:hover {
-                background: #f05462;
-                padding: 8px 38px;
-                border: 2px solid white;
-            }
+        .customer-table th {
+            background-color: #f2f2f2;
+            text-align: left;
         }
 
-        @media screen and (max-width:536px) {
-            .brand-name h1 {
-                font-size: 16px;
-            }
+        .customer-table tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-            .container .content .cards {
-                justify-content: center;
-            }
-
-            .side-menu li img {
-                width: 30px;
-                height: 30px;
-            }
-
-            .container .content .content-2 .recent-payments table th:nth-child(2),
-            .container .content .content-2 .recent-payments table td:nth-child(2) {
-                display: none;
-            }
+        .customer-table tbody tr:hover {
+            background-color: #ddd;
         }
     </style>
 </head>
 
 <body>
-    <div class="side-menu">
-        <div class="brand-name">
-            <h1>Brand</h1>
-        </div>
-        <!-- <ul>
-            <li><img src="dashboard (2).png" alt="">&nbsp; <span>Dashboard</span> </li>
-            <li><img src="reading-book (1).png" alt="">&nbsp;<span>Students</span> </li>
-            <li><img src="teacher2.png" alt="">&nbsp;<span>Teachers</span> </li>
-            <li><img src="school.png" alt="">&nbsp;<span>Schools</span> </li>
-            <li><img src="payment.png" alt="">&nbsp;<span>Income</span> </li>
-            <li><img src="help-web-button.png" alt="">&nbsp; <span>Help</span></li>
-            <li><img src="settings.png" alt="">&nbsp;<span>Settings</span> </li>
-        </ul> -->
-    </div>
-    <div class="container">
-        <div class="header">
-            <div class="nav">
-                <div class="search">
-                    <input type="text" placeholder="Search..">
-                    <button type="submit"><img src="search.png" alt=""></button>
-                </div>
-                <div class="user">
-                    <a href="#" class="btn">Add New</a>
-                    <img src="notifications.png" alt="">
-                    <div class="img-case">
-                        <img src="user.png" alt="">
-                    </div>
+
+    <div class="admin-dashboard">
+
+        <div class="ds-left-menu ">
+
+            <button class="btn-menu">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+            </button>
+
+            <div class="ds-perfil">
+
+                <div class="info-perfil">
+                    <span>Admin</span>
+                    <h3>Juan</h3>
                 </div>
             </div>
-        </div>
-        <div class="content">
-            <div class="cards">
-                <div class="card">
-                    <div class="box">
-                        <h1>2194</h1>
-                        <h3>Students</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="students.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>53</h1>
-                        <h3>Teachers</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="teachers.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>5</h1>
-                        <h3>Schools</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="schools.png" alt="">
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <h1>350000</h1>
-                        <h3>Income</h3>
-                    </div>
-                    <div class="icon-case">
-                        <img src="income.png" alt="">
-                    </div>
-                </div>
+
+            <div class="ds-menu">
+
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a></li>
+
+                </ul>
+
             </div>
-            <div class="content-2">
+
+            <div class="sign-off">
+                <a href="#" class="btn-sign-off">
+                    <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+
+
+        </div>
+
+        <div class="ds-panel">
+
+            <div class="panel-header">
+                <div class="icono">
+                    <i class="fa-solid fa-home"></i>
+                </div>
+                <h2>Home Dashboard</h2>
+            </div>
+
+            <div class="ds-panel-content">
+
                 <div class="recent-payments">
                     <div class="title">
                         <h2>Recent Users</h2>
                     </div>
                     <div class="woocommerce-data">
-                        <ul>
-                            {% for order in orders %}
-                                <li>ID de Orden: {{ order.id }}</li>
-                                <li>Cliente: {{ order.billing.first_name }} {{ order.billing.last_name }}</li>
-                                <li>Email del Cliente: {{ order.billing.email }}</li>
-                                <li>Teléfono del Cliente: {{ order.billing.phone }}</li>
-                                <hr>
+                        <table class="customer-table">
+                            <thead>
+                                <tr>
+                                    <th>ID de Orden</th>
+                                    <th>Cliente</th>
+                                    <th>Email del Cliente</th>
+                                    <th>Teléfono del Cliente</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.billing.first_name }} {{ order.billing.last_name }}</td>
+                                    <td>{{ order.billing.email }}</td>
+                                    <td>{{ order.billing.phone }}</td>
+                                </tr>
                                 {% endfor %}
-                        </ul>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                  
-            </div>
-        </div>
-        <div class="new-students">
-            <div class="title">
-                <h2>New Students</h2>
-                <a href="#" class="btn">View All</a>
-            </div>
-            <table>
-                <tr>
-                    <th>Profile</th>
-                    <th>Name</th>
-                    <th>option</th>
-                </tr>
-                <tr>
-                    <td><img src="user.png" alt=""></td>
-                    <td>John Steve Doe</td>
-                    <td><img src="info.png" alt=""></td>
-                </tr>
-                <tr>
-                    <td><img src="user.png" alt=""></td>
-                    <td>John Steve Doe</td>
-                    <td><img src="info.png" alt=""></td>
-                </tr>
-                <tr>
-                    <td><img src="user.png" alt=""></td>
-                    <td>John Steve Doe</td>
-                    <td><img src="info.png" alt=""></td>
-                </tr>
-                <tr>
-                    <td><img src="user.png" alt=""></td>
-                    <td>John Steve Doe</td>
-                    <td><img src="info.png" alt=""></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    </div>
-    </div>
 
 
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://kit.fontawesome.com/075922b03a.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const btnMenu = document.querySelector('.btn-menu');
+
+            btnMenu.addEventListener('click', () => {
+                document.querySelector('.ds-left-menu').classList.toggle('menu-active');
+                document.querySelector('.ds-panel').classList.toggle('tab-menu')
+            });
+        });
+    </script>
 </body>
 
 </html>
