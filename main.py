@@ -28,6 +28,7 @@ fake_users_db = {
     }
 }
 
+
 @app.get("/register", response_class=HTMLResponse)
 async def show_register(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
