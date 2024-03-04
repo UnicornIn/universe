@@ -290,6 +290,47 @@
             transform: rotate(180deg);
         }
 
+
+        .search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.search-bar button.search-button {
+    background-color: #007bffb7;
+    color: rgba(255, 255, 255, 0.973);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.search-bar button.search-button:hover {
+    background-color: hsla(268, 100%, 35%, 0.906);
+}
+
+.search-container {
+    float: right;
+    height: 50px;
+    width: 220px; /* Ajusta el ancho según sea necesario */
+  }
+  
+  .search-button {
+    float: right;
+    margin-right: 10px; /* Ajusta la distancia según sea necesario */
+  }
+  
+ 
+  
+          
+         
         /*===================================
     ESTILOS PANEL RIGHT
 ===================================*/
@@ -365,6 +406,7 @@
         .customer-table tbody tr:hover {
             background-color: #ddd;
         }
+        
     </style>
 </head>
 
@@ -418,11 +460,23 @@
             </div>
 
             <div class="ds-panel-content">
-
                 <div class="recent-payments">
-                    <div class="title">
-                        <h2>Recent Users</h2>
+                  <div class="title">
+                    <h2>Recent Users</h2>
+                  </div>
+                  <div class="search-container">
+                    <div class="search-bar">
+                      <input type="text" placeholder="Buscar...">
+                      <button class="search-button">
+                        <i class="fas fa-search"></i>
+                      </button>
                     </div>
+                  </div>
+
+                  
+                  
+                  
+              
                     <div class="woocommerce-data">
                         <table class="customer-table">
                             <thead>
@@ -446,6 +500,7 @@
                         </table>
                     </div>
                 </div>
+                
 
 
 
@@ -470,3 +525,5 @@
 </body>
 
 </html>
+
+

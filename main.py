@@ -6,6 +6,7 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from woocommerce import API
 from database.connection import execute_query
 
+
 app = FastAPI()
 app.title = "Mi aplicación con  FastAPI"
 app.version = "0.0.1"
@@ -112,7 +113,24 @@ async def read_orders():
         consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
         version="wc/v3",
     )
+    
+@app.get("/search-bar", response_class=HTMLResponse)
+async def search(order_number: int,request:Request): 
+    
+    try:
+        
+        order_results = wcapi.get("orders", params = {"number":order_number}).json()
 
-    orders = wcapi.get("orders").json()
+   
 
-    return orders
+        return templates.TemplateResponse("user.html" , {"request":request , "data_user": order_number})
+    
+    
+    except Exception as e:
+        
+       
+        return {"error": str(e)}
+    
+        
+    
+    
