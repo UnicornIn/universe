@@ -1,8 +1,8 @@
-from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi import FastAPI, Request, HTTPException, Depends, Query
 from fastapi import FastAPI, Request, Form
-from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse, RedirectResponse
+from woocommerce import API as woocommerce
 from woocommerce import API
 from database.connection import execute_query
 
@@ -37,15 +37,30 @@ async def show_register(request: Request):
 async def show_login(request: Request):
     return templates.TemplateResponse("login.html", {"request": request})
 
-@app.get("/dashboard", response_class=HTMLResponse)
+@app.get("/productos", response_class=HTMLResponse)
 async def show_dashboard(request: Request):
     # Obtén datos de la API de WooCommerce (aquí obtengo productos como ejemplo)
     products = wcapi.get("products").json()
+
+    return templates.TemplateResponse("productos.html", {"request": request, "products": products})
+
+@app.get("/ordenes", response_class=HTMLResponse)
+async def show_dashboard(request: Request):
+    # Obtén datos de la API de WooCommerce (aquí obtengo productos como ejemplo)
+    orders = wcapi.get("products").json()
+
+    return templates.TemplateResponse("ordenes.html", {"request": request, "orders": orders})
+
+
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def show_dashboard(request: Request):
+    # Obtén datos de la API de WooCommerce (aquí obtengo productos como ejemplo)
     orders = wcapi.get("orders").json()
     customers = wcapi.get("customers").json()
 
     # Renderiza el template del dashboard con los datos
-    return templates.TemplateResponse("dashboard.html", {"request": request, "products": products, "orders": orders, "customers": customers})
+    return templates.TemplateResponse("dashboard.html", {"request": request, "orders": orders, "customers": customers})
 
 @app.get("/")
 async def read_root():
@@ -53,34 +68,19 @@ async def read_root():
 
 @app.get("/products/{product_id}")
 async def read_product(product_id: int):
-    wcapi = API(
-        url="https://rizosfelices.co",
-        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
-        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
-        version="wc/v3",
-    )
+
     product = wcapi.get(f"products/{product_id}").json()
     return product
 
 @app.get("/products/")
 async def read_products():
-    wcapi = API(
-        url="https://rizosfelices.co",
-        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
-        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
-        version="wc/v3",
-    )
+    
     products = wcapi.get("products").json()
     return products
 
-@app.get("/customers")
+
+"""@app.get("/customers")
 async def get_customers_from_orders():
-    wcapi = API(
-        url="https://rizosfelices.co",
-        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
-        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
-        version="wc/v3",
-    )
 
     orders = wcapi.get("orders").json()
 
@@ -98,7 +98,7 @@ async def get_customers_from_orders():
             # Guardar el cliente en la base de datos
             save_customer_to_database(customer)
 
-    return {"customers": customers}
+    return {"customers": customers}"""
 
 def save_customer_to_database(customer):
     # Formatear la consulta SQL para insertar el cliente en la tabla customers
@@ -106,32 +106,52 @@ def save_customer_to_database(customer):
     # Ejecutar la consulta
     execute_query(query)
 
+"""@app.get("/customers", response_class=HTMLResponse)
+async def get_customers( 
+    request: Request,
+    order_id: int = Query (None, alias= "order_id")
+
+):
+    if  order_id:
+        order_data = woocommerce.get( f"orders/{order_id}" ).json()
+        orders = [order_data]
+    else:
+        orders = wcapi.get("orders").json
+    return  templates.TemplateResponse("dashboard.html")
+"""
+@app.get("/customers")
+async def get_customers_from_orders( request :Request ,
+    order_id: int = Query(None, alias="order_id")
+):
+    
+
+    if order_id:
+        # Obtener datos de un pedido específico
+        order = wcapi.get(f"orders/{order_id}").json()
+        orders = [order]
+    else:
+        # Obtener todos los pedidos
+        orders = wcapi.get("orders").json()
+
+    customers = []
+    for order in orders:
+        if order.get("id") == order_id:
+            billing_info = order.get("billing")
+            if billing_info:
+                customer = {
+                    "id": order_id,
+                    "first_name": billing_info.get("first_name"),
+                    "last_name": billing_info.get("last_name"),
+                    "email": billing_info.get("email"),
+                    "phone": billing_info.get("phone"),
+                }
+                customers.append(customer)
+
+    return templates.TemplateResponse("dashboard.html", {"request": request, "orders": orders})
+
+
 @app.get("/orders")
 async def read_orders():
-    wcapi = API(
-        url="https://rizosfelices.co",
-        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
-        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
-        version="wc/v3",
-    )
     
-@app.get("/search-bar", response_class=HTMLResponse)
-async def search(order_number: int,request:Request): 
-    
-    try:
-        
-        order_results = wcapi.get("orders", params = {"number":order_number}).json()
-
-   
-
-        return templates.TemplateResponse("user.html" , {"request":request , "data_user": order_number})
-    
-    
-    except Exception as e:
-        
-       
-        return {"error": str(e)}
-    
-        
-    
-    
+    orders = wcapi.get("orders", params={"per_page": 15}).json()
+    return orders
