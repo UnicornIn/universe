@@ -28,25 +28,6 @@
         body {
             font-family: 'Poppins', sans-serif;
             overflow: hidden;
-            background-color: var(--color-3); /* Color de fondo común */
-            transition: background-color 0.3s ease; /* Transición suave para cambios de color de fondo */
-        }
-        /* Estilos para tema diurno */
-        .theme-light {
-            --color-1: #161719;
-            --color-2: #874fff;
-            --color-3: #f0f0f1;
-            --color-4: #383838;
-            --color5: #d3d3d3;
-        }
-        
-        /* Estilos para tema nocturno */
-        .theme-dark {
-            --color-1: #000000;
-            --color-2: #4e4e4e;
-            --color-3: #1c1c1c;
-            --color-4: #ffffff;
-            --color5: #d3d3d3;
         }
 
         ol,
@@ -311,48 +292,30 @@
 
 
         .search-bar {
-            display: flex;
-            align-items: center;
-        }
+    display: flex;
+    align-items: center;
+}
 
-        .search-bar input[type="text"] {
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin-right: 5px;
-        }
+.search-bar input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+}
 
-        .search-bar button.search-button {
-            background-color: #007bffb7;
-            color: rgba(255, 255, 255, 0.973);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+.search-bar button.search-button {
+    background-color: #007bffb7;
+    color: rgba(255, 255, 255, 0.973);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
-        .search-bar button.search-button:hover {
-            background-color: hsla(268, 100%, 35%, 0.906);
-        }
+.search-bar button.search-button:hover {
+    background-color: hsla(268, 100%, 35%, 0.906);
+}
 
-        .search-container {
-            float: right;
-            height: 50px;
-            width: 220px;
-            /* Ajusta el ancho según sea necesario */
-        }
-
-        .search-button {
-            float: right;
-            margin-right: 10px;
-            /* Ajusta la distancia según sea necesario */
-        }
-
-
-
-
-
-<<<<<<< HEAD
 .search-container {
     float: right;
     height: 50px;
@@ -417,8 +380,6 @@
   }
  
   
-=======
->>>>>>> a95581b53dfb299371a89d9ed2432216cfa6d77f
         /*===================================
     ESTILOS PANEL RIGHT
 ===================================*/
@@ -494,11 +455,11 @@
         .customer-table tbody tr:hover {
             background-color: #ddd;
         }
+        
     </style>
 </head>
 
 <body>
-    
 
     <div class="admin-dashboard">
 
@@ -517,22 +478,29 @@
             </div>
 
             <div class="ds-menu">
+
                 <ul>
-                    <li><a href="/productos"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a></li>
-                    <li><a href="/ordenes"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a></li>
-                    <li><a href="/ajustes"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-home"></i><span>Home</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a></li>
+                    <li><a href="#"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a></li>
+
                 </ul>
+
             </div>
-            
+
             <div class="sign-off">
                 <a href="#" class="btn-sign-off">
                     <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     <span>Cerrar Sesión</span>
                 </a>
             </div>
+
+
         </div>
 
         <div class="ds-panel">
+
             <div class="panel-header">
                 <div class="icono">
                     <i class="fa-solid fa-home"></i>
@@ -543,7 +511,6 @@
 
             <div class="ds-panel-content">
                 <div class="recent-payments">
-<<<<<<< HEAD
                     <div class="container">
                         <div class="box">
                           <div class="top">
@@ -580,19 +547,13 @@
                       <button class="search-button">
                         <i class="fas fa-search"></i>
                       </button>
-=======
-                    <div class="title">
-                        <h2>Recent Users</h2>
                     </div>
-                    <div class="search-bar">
-                        <form action="/customers" method="get">
-                            <label for="order-id">Buscar por ID de Orden:</label>
-                            <input type="number" id="order-id" name="order_id" required>
-                            <button type="submit">Buscar</button>
-                        </form>
->>>>>>> a95581b53dfb299371a89d9ed2432216cfa6d77f
-                    </div>
+                  </div>
 
+                  
+                  
+                  
+              
                     <div class="woocommerce-data">
                         <table class="customer-table">
                             <thead>
@@ -607,24 +568,15 @@
                                 {% for order in orders %}
                                 <tr>
                                     <td>{{ order.id }}</td>
-                                    <td>{{ order.billing.first_name }} 
-                                        {{ order.billing.last_name }}</td>
+                                    <td>{{ order.billing.first_name }} {{ order.billing.last_name }}</td>
                                     <td>{{ order.billing.email }}</td>
                                     <td>{{ order.billing.phone }}</td>
                                 </tr>
                                 {% endfor %}
-                            </tbody
+                            </tbody>
                         </table>
-                        
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> a95581b53dfb299371a89d9ed2432216cfa6d77f
             </div>
         </div>
 
@@ -643,3 +595,5 @@
 </body>
 
 </html>
+
+
