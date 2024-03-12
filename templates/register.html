@@ -244,7 +244,7 @@ footer a {
     <nav class="nav">
         <a href="#" class="logo">Risos Felices</a>
         <ul class="nav-menu">
-            <li class="nav-menu-item"><a href="#" class="nav-menu-link">Blog</a></li>
+            <li class="nav-menu-item"><a href="https://rizosfelices.co/" class="nav-menu-link">Blog</a></li>
             <li class="nav-menu-item"><a href="#" class="nav-menu-link">Contacto</a></li>
             <li class="nav-menu-item"><a href="http://127.0.0.1:8000/login#" class="nav-menu-link">Register</a></li>
         </ul>
@@ -254,12 +254,12 @@ footer a {
       
     <div class="signup">
       
-      <form action="#" class="signup__form">
+      <form action="http://127.0.0.1:8000/dashboard" class="signup__form" action="http://127.0.0.1:8000/dashboard" method="get">
         <input type="text" name="first-name" id="first-name" aria-label="First Name" placeholder="First Name" required>
         <input type="text" name="last-name" id="last-name" aria-label="Last Name" placeholder="Last Name" required>
         <input type="email" name="email" id="email" aria-label="Email Address" placeholder="Email Address" required>
         <input type="password" name="password" id="password" aria-label="Password" placeholder="Password" required>
-        <input type="submit" value="Register" aria-label="Submit">
+        <input type="submit"  value="Register" aria-label="Submit">
       </form>
     </div>
   </main>
@@ -282,7 +282,7 @@ function addErrorMessage(e) {
     var error_icon = document.createElement('span');
     error_icon.setAttribute("data-id", name);
     error_icon.classList.add('error-icon');
-    error_icon.innerHTML = "<img src='images/icon-error.svg' alt=''>";
+    error_icon.innerHTML = "Looks like this is not an " + e.target.getAttribute("placeholder") + ".";
 
     var error_message = document.createElement('span');
     error_message.setAttribute("data-id", name);
