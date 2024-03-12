@@ -155,3 +155,33 @@ async def read_orders():
     
     orders = wcapi.get("orders", params={"per_page": 15}).json()
     return orders
+
+#Reports de las ventas al año
+
+# @app.get("/reports/sales")
+# async def get_sales():
+          
+    
+#     reports = wcapi.get("reports/sales?date_min=2023-05-03&date_max=2024-05-04").json()
+
+#     return reports
+
+#Reports de las ventas al mes
+
+@app.get("/reports/sales/monthly")
+async def get_sales_month():
+          
+    
+    reports = wcapi.get("reports/sales?filter[period]=month").json()
+
+    return reports
+
+#Reports de las ventas de la week
+
+@app.get("/reports/sales/week", response_class=HTMLResponse)
+async def get_sales_week(request :Request):
+          
+    
+    reports = wcapi.get("reports/sales?filter[period]=week").json()
+
+    return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
