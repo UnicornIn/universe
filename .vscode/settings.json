@@ -1,3 +1,18 @@
 {
-    "python.pythonPath": "venv\\Scripts\\python.exe"
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "cSpell.words": [
+        "aplicación",
+        "Ejemplo",
+        "específico",
+        "fastapi",
+        "Obtener",
+        "ordenes",
+        "pedidos",
+        "productos",
+        "templating",
+        "todos",
+        "Usuario",
+        "wcapi",
+        "woocommerce"
+    ]
 }

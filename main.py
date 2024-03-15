@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Request, HTTPException, Depends, Query
 from fastapi import FastAPI, Request, Form
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse
 from woocommerce import API as woocommerce
 from woocommerce import API
 from database.connection import execute_query
@@ -144,6 +144,7 @@ async def get_customers_from_orders( request :Request ,
                     "last_name": billing_info.get("last_name"),
                     "email": billing_info.get("email"),
                     "phone": billing_info.get("phone"),
+                    "address_1": billing_info.get("address_1"),
                 }
                 customers.append(customer)
 
@@ -168,20 +169,39 @@ async def read_orders():
 
 #Reports de las ventas al mes
 
-@app.get("/reports/sales/monthly")
-async def get_sales_month():
+# @app.get("/reports/sales/monthly")
+# async def get_sales_month():
           
     
-    reports = wcapi.get("reports/sales?filter[period]=month").json()
+#     reports = wcapi.get("reports/sales?filter[period]=month").json()
 
-    return reports
+#     return reports
 
 #Reports de las ventas de la week
 
-@app.get("/reports/sales/week", response_class=HTMLResponse)
-async def get_sales_week(request :Request):
+# @app.get("/reports/sales/week", response_class=HTMLResponse)
+# async def get_sales_week(request :Request):
           
     
-    reports = wcapi.get("reports/sales?filter[period]=week").json()
+#     total_sales = wcapi.get("reports/sales?filter[period]=week").json()
 
-    return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
+#     return templates.TemplateResponse("dashboard.html", {"request": request, "reports": total_sales })
+
+# @app.get("/reports")
+# async def get_sales():
+
+
+#     reports = wcapi.get("reports").json()
+
+#     return reports
+
+@app.get("/reports/sales/week", response_class=HTMLResponse)
+async def get_sales_week(request: Request):
+    
+        response = wcapi.get("reports/sales?filter[period]=week")
+        
+        reports = response.json()
+        
+        return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
+    
+
