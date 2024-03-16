@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>DASBOARD</title>
+    <title>Dashboard</title>
 
     <!-- FUENTE GOOGLE FONTS : Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --color-1: #161719;
@@ -16,120 +19,120 @@
         --color-4: #383838;
         --color5: #d3d3d3;
       }
-      
+
       * {
         padding: 0;
         margin: 0;
         box-sizing: border-box;
       }
-      
+
       body {
-        font-family: 'Poppins', sans-serif;
-        overflow: hidden;
+        font-family: "Poppins", sans-serif;
+       /*overflow: hidden;*/ /*Propiedad para eliminar el desplazamineto vertical*/
       }
-      
+
       ol,
       ul {
         list-style: none;
       }
-      
+
       a {
         text-decoration: none;
       }
-      
+
       /* Stylos de Recent Users */
       .content-2 {
         padding: 20px;
       }
-      
+
       .recent-payments {
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 20px;
         background-color: #f9f9f9;
       }
-      
+
       .title {
         margin-bottom: 15px;
       }
-      
+
       .title h2 {
         color: #333;
         font-size: 24px;
         margin: 0;
       }
-      
+
       .woocommerce-data ul {
         list-style: none;
         padding: 0;
       }
-      
+
       .woocommerce-data ul li {
         margin-bottom: 10px;
         color: #666;
       }
-      
+
       .woocommerce-data ul li:nth-child(even) {
         background-color: #fafafa;
       }
-      
+
       .woocommerce-data ul li hr {
         border: 0;
         border-top: 1px solid #ccc;
         margin: 10px 0;
       }
-      
+
       /* Estilos de el dashboard en si */
-      
+
       .admin-dashboard {
         position: relative;
         display: flex;
       }
-      
+
       .ds-left-menu {
         background: var(--color-1);
-        height: 100vh;
+        /*height: 100vh;*/ /*Contenedor completo*/
         color: #fff;
         width: 250px;
         position: relative;
         padding: 0px 20px;
-      
+
         transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
       }
-      
+
       .ds-left-menu.menu-active {
         width: 80px;
         padding: 0px 10px;
       }
-      
+
       .ds-left-menu.menu-active .ds-perfil {
         justify-content: center;
       }
-      
+
       .ds-left-menu.menu-active .ds-perfil .info-perfil {
         display: none;
       }
-      
+
       .ds-left-menu.menu-active ul li a span,
       .ds-left-menu.menu-active .sign-off a span {
         visibility: hidden;
         display: none;
       }
-      
+
       .ds-left-menu.menu-active ul li a i,
       .ds-left-menu.menu-active .sign-off a i {
         margin-right: 0;
       }
-      
+
       .ds-left-menu.menu-active .sign-off {
         width: calc(100% - 20px);
       }
-      
+
       .ds-left-menu.menu-active .sign-off a,
       .ds-left-menu.menu-active ul li a {
         text-align: center;
       }
-      
+
       .btn-menu {
         position: absolute;
         background: var(--color-2);
@@ -146,20 +149,20 @@
         font-size: 16px;
         z-index: 100;
       }
-      
+
       .ds-menu {
         width: 100%;
         overflow-x: scroll;
-        height: 100%;
+        /*height: 100%;*/
         padding-bottom: 150px;
         padding-top: 20px;
         border-top: 1px solid #252628;
       }
-      
+
       .ds-menu ul li {
         position: relative;
       }
-      
+
       .ds-menu ul li a {
         cursor: pointer;
         color: var(--color5);
@@ -170,49 +173,49 @@
         padding: 10px;
         border-radius: 4px;
       }
-      
+
       .ds-menu ul li a:hover {
         background: var(--color-2);
         color: #fff;
       }
-      
+
       .ds-menu ul li a i {
         margin-right: 10px;
       }
-      
+
       .ds-menu::-webkit-scrollbar {
         -webkit-appearance: none;
       }
-      
+
       .ds-menu::-webkit-scrollbar:vertical {
         width: 10px;
       }
-      
+
       .ds-menu::-webkit-scrollbar-button:increment,
       .ds-menu::-webkit-scrollbar-button {
         display: none;
       }
-      
+
       .ds-menu::-webkit-scrollbar:horizontal {
         height: 10px;
       }
-      
+
       .ds-menu::-webkit-scrollbar-thumb {
         background-color: #4f486e;
         border-radius: 20px;
         border: 2px solid var(--color-1);
       }
-      
+
       .ds-menu::-webkit-scrollbar-track {
         border-radius: 10px;
       }
-      
+
       .ds-perfil {
         display: flex;
         align-items: center;
         padding: 20px 0px;
       }
-      
+
       .ds-perfil .foto {
         position: relative;
         width: 50px;
@@ -220,9 +223,9 @@
         border-radius: 50%;
         border: 3px solid #525252;
       }
-      
+
       .ds-perfil .foto::after {
-        content: '';
+        content: "";
         position: absolute;
         width: 10px;
         height: 10px;
@@ -231,29 +234,29 @@
         right: 0;
         border-radius: 50%;
       }
-      
+
       .ds-perfil .foto img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
       }
-      
+
       .ds-perfil .info-perfil {
         padding-left: 10px;
       }
-      
+
       .ds-perfil .info-perfil span {
         font-size: 12px;
         color: #bcbcbd;
       }
-      
+
       .ds-perfil .info-perfil h3 {
         font-size: 18px;
         font-weight: 400;
         margin-top: -5px;
       }
-      
+
       .sign-off {
         position: absolute;
         bottom: 0;
@@ -263,7 +266,7 @@
         border-top: 1px solid #252628;
         padding: 15px 0px;
       }
-      
+
       .sign-off a.btn-sign-off {
         cursor: pointer;
         color: var(--color5);
@@ -273,29 +276,29 @@
         padding: 10px;
         border-radius: 4px;
       }
-      
+
       .sign-off a.btn-sign-off:hover {
         background: #dd4b39;
         color: #fff;
       }
-      
+
       .sign-off a.btn-sign-off i {
         margin-right: 10px;
         transform: rotate(180deg);
       }
-      
+
       .search-bar {
         display: flex;
         align-items: center;
       }
-      
-      .search-bar input[type='text'] {
+
+      .search-bar input[type="text"] {
         padding: 8px;
         border: 1px solid #ccc;
         border-radius: 5px;
         margin-right: 5px;
       }
-      
+
       .search-bar button.search-button {
         background-color: #007bffb7;
         color: rgba(255, 255, 255, 0.973);
@@ -304,26 +307,26 @@
         border-radius: 4px;
         cursor: pointer;
       }
-      
+
       .search-bar button.search-button:hover {
         background-color: hsla(268, 100%, 35%, 0.906);
       }
-      
+
       .search-container {
         float: right;
         height: 50px;
         width: 220px; /* Ajusta el ancho según sea necesario */
       }
-      
+
       .search-button {
         float: right;
         margin-right: 10px; /* Ajusta la distancia según sea necesario */
       }
-      
+
       /*==================================
                                 ESTILOS DE CARDS DE REPOSR
                                 ====================*/
-      
+
       .container {
         display: flex;
         flex-wrap: wrap;
@@ -365,14 +368,14 @@
         background-color: #f0f0f0;
         border-radius: 10px;
       }
-      
+
       .progress-fill {
         height: 100%;
         background-color: #4caf50;
         border-radius: 10px;
         transition: width 0.3s ease-in-out;
       }
-      
+
       /*===================================
                                   ESTILOS PANEL RIGHT
                               ===================================*/
@@ -381,11 +384,11 @@
         padding: 20px;
         background: var(--color-3);
       }
-      
+
       .ds-panel.tab-menu {
         width: calc(100% - 80px);
       }
-      
+
       .ds-panel .panel-header {
         width: 100%;
         background: #fff;
@@ -395,7 +398,7 @@
         align-items: center;
         margin-bottom: 20px;
       }
-      
+
       .ds-panel .panel-header .icono {
         width: 50px;
         line-height: 50px;
@@ -407,44 +410,44 @@
         color: var(--color-2);
         background: #874fff1f;
       }
-      
+
       .ds-panel .panel-header h2 {
         font-size: 22px;
         font-weight: 400;
         color: var(--color-4);
       }
-      
+
       .ds-panel-content {
         background: #fff;
         padding: 10px;
         border-radius: 4px;
       }
-      
+
       .ds-menu ul li a:hover {
         background: var(--color-2);
         color: #fff;
       }
-      
+
       .customer-table {
         width: 100%;
         border-collapse: collapse;
       }
-      
+
       .customer-table th,
       .customer-table td {
         border: 1px solid #ccc;
         padding: 8px;
       }
-      
+
       .customer-table th {
         background-color: #f2f2f2;
         text-align: left;
       }
-      
+
       .customer-table tbody tr:nth-child(even) {
         background-color: #f9f9f9;
       }
-      
+
       .customer-table tbody tr:hover {
         background-color: #ddd;
       }
@@ -452,7 +455,7 @@
         width: 100%;
         overflow-x: hidden; /* Cambiado a hidden para ocultar el desplazamiento horizontal */
         overflow-y: auto; /* Agregado para activar el desplazamiento vertical */
-        height: 100%;
+        /*height: 100%;*/
         padding-bottom: 150px;
         padding-top: 20px;
         border-top: 1px solid #252628;
@@ -463,7 +466,9 @@
   <body>
     <div class="admin-dashboard">
       <div class="ds-left-menu">
-        <button class="btn-menu"><i class="fa-solid fa-circle-chevron-left"></i></button>
+        <button class="btn-menu">
+          <i class="fa-solid fa-circle-chevron-left"></i>
+        </button>
 
         <div class="ds-perfil">
           <div class="info-perfil">
@@ -475,13 +480,20 @@
         <div class="ds-menu">
           <ul>
             <li>
-              <a href="productos"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a>
+              <a href="productos"
+                ><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a
+              >
             </li>
             <li>
-              <a href="ordenes"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a>
+              <a href="ordenes"
+                ><i class="fa-solid fa-basket-shopping"></i
+                ><span>Ordenes</span></a
+              >
             </li>
             <li>
-              <a href="ajustes"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a>
+              <a href="ajustes"
+                ><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a
+              >
             </li>
           </ul>
         </div>
@@ -510,11 +522,11 @@
                   <h2>Dia</h2>
                 </div>
                 <div class="progress-bar">
-                  <div class="progress-fill" style="width: 12%;">
+                  <div class="progress-fill" style="width: 12%">
                     {% for reports in reports %}
-                      <tr>
-                        <td>{{ reports.total_sales }}</td>
-                      </tr>
+                    <tr>
+                      <td>{{ reports.total_sales }}</td>
+                    </tr>
                     {% endfor %}
                   </div>
                 </div>
@@ -524,7 +536,7 @@
                   <h2>Mes</h2>
                 </div>
                 <div class="progress-bar">
-                  <div class="progress-fill" style="width: 60%;"></div>
+                  <div class="progress-fill" style="width: 60%"></div>
                 </div>
               </div>
               <div class="box">
@@ -532,7 +544,7 @@
                   <h2>Year</h2>
                 </div>
                 <div class="progress-bar">
-                  <div class="progress-fill" style="width: 20%;"></div>
+                  <div class="progress-fill" style="width: 20%"></div>
                 </div>
               </div>
             </div>
@@ -561,12 +573,14 @@
               </thead>
               <tbody>
                 {% for order in orders %}
-                  <tr>
-                    <td>{{ order.id }}</td>
-                    <td>{{ order.billing.first_name }} {{ order.billing.last_name }}</td>
-                    <td>{{ order.billing.email }}</td>
-                    <td>{{ order.billing.phone }}</td>
-                  </tr>
+                <tr>
+                  <td>{{ order.id }}</td>
+                  <td>
+                    {{ order.billing.first_name }} {{ order.billing.last_name }}
+                  </td>
+                  <td>{{ order.billing.email }}</td>
+                  <td>{{ order.billing.phone }}</td>
+                </tr>
                 {% endfor %}
               </tbody>
             </table>
@@ -574,19 +588,20 @@
         </div>
       </div>
     </div>
-    
 
     <script src="https://kit.fontawesome.com/075922b03a.js"></script>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const btnMenu = document.querySelector('.btn-menu')
-      
-        btnMenu.addEventListener('click', () => {
-          document.querySelector('.ds-left-menu').classList.toggle('menu-active')
-          document.querySelector('.ds-panel').classList.toggle('tab-menu')
-        })
-      })
+      document.addEventListener("DOMContentLoaded", function () {
+        const btnMenu = document.querySelector(".btn-menu");
+
+        btnMenu.addEventListener("click", () => {
+          document
+            .querySelector(".ds-left-menu")
+            .classList.toggle("menu-active");
+          document.querySelector(".ds-panel").classList.toggle("tab-menu");
+        });
+      });
     </script>
   </body>
 </html>
