@@ -25,7 +25,6 @@
       
       body {
         font-family: 'Poppins', sans-serif;
-        overflow: hidden;
       }
       
       ol,
@@ -88,12 +87,12 @@
       
       .ds-left-menu {
         background: var(--color-1);
-        height: 100vh;
+        /*height: 100vh;se comenta para motrar contenedor left completo */
+        height: auto;
         color: #fff;
         width: 250px;
         position: relative;
         padding: 0px 20px;
-      
         transition: margin-left 0.3s ease-in-out, width 0.3s ease-in-out;
       }
       
@@ -149,8 +148,7 @@
       
       .ds-menu {
         width: 100%;
-        overflow-x: scroll;
-        height: 100%;
+        height: 100vh;
         padding-bottom: 150px;
         padding-top: 20px;
         border-top: 1px solid #252628;
@@ -399,7 +397,6 @@
       .ds-panel .panel-header .icono {
         width: 50px;
         line-height: 50px;
-        height: 50px;
         border-radius: 4px;
         text-align: center;
         font-size: 25px;
@@ -450,9 +447,7 @@
       }
       .ds-menu {
         width: 100%;
-        overflow-x: hidden; /* Cambiado a hidden para ocultar el desplazamiento horizontal */
-        overflow-y: auto; /* Agregado para activar el desplazamiento vertical */
-        height: 100%;
+        /*height: 100%;*/
         padding-bottom: 150px;
         padding-top: 20px;
         border-top: 1px solid #252628;
@@ -474,6 +469,9 @@
 
         <div class="ds-menu">
           <ul>
+            <li>
+              <a href="dashboard"><i class="fa-solid fa-home"></i><span>Home</span></a>
+            </li>
             <li>
               <a href="productos"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a>
             </li>
