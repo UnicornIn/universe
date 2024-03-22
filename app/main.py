@@ -1,10 +1,13 @@
 from fastapi import FastAPI, Request,Query
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request,HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
 from woocommerce import API as woocommerce
 from woocommerce import API
 from database.connection import execute_query
+import requests
+
 
 
 app = FastAPI()
@@ -12,6 +15,7 @@ app.title = "Mi aplicación con  FastAPI"
 app.version = "0.0.1"
 
 templates = Jinja2Templates(directory="templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 wcapi = API(
         url="https://rizosfelices.co",
@@ -45,16 +49,16 @@ async def show_dashboard(request: Request):
 
 @app.get("/ordenes", response_class=HTMLResponse)
 async def show_dashboard(request: Request):
-    orders = wcapi.get("products").json()
+    orders = wcapi.get("orders").json()
 
     return templates.TemplateResponse("ordenes.html", {"request": request, "orders": orders})
 
-@app.get("/dashboard", response_class=HTMLResponse)
-async def show_dashboard(request: Request):
-    orders = wcapi.get("orders").json()
-    customers = wcapi.get("customers").json()
+# @app.get("/dashboard", response_class=HTMLResponse)
+# async def show_dashboard(request: Request):
+#     orders = wcapi.get("orders").json()
+#     customers = wcapi.get("customers").json()
 
-    return templates.TemplateResponse("dashboard.html", {"request": request, "orders": orders, "customers": customers})
+#     return templates.TemplateResponse("dashboard.html", {"request": request, "orders": orders, "customers": customers})
 
 @app.get("/products/{product_id}")
 async def read_product(product_id: int):
@@ -133,12 +137,12 @@ async def read_orders():
 #Reports de las ventas al año
 
 # @app.get("/reports/sales")
-# async def get_sales():
+# async def get_sales(request :Request):
           
     
 #     reports = wcapi.get("reports/sales?date_min=2023-05-03&date_max=2024-05-04").json()
 
-#     return reports
+#     return templates.TemplateResponse("dashboard.html", {"request": request,"reports": reports })
 
 #Reports de las ventas al mes
 
@@ -160,21 +164,45 @@ async def read_orders():
 
 #     return templates.TemplateResponse("dashboard.html", {"request": request, "reports": total_sales })
 
-# @app.get("/reports")
-# async def get_sales():
-
-
-#     reports = wcapi.get("reports").json()
-
-#     return reports
-
-@app.get("/reports/sales/week", response_class=HTMLResponse)
-async def get_sales_week(request: Request):
+# @app.get("/reports/orders/totals")
+# async def get_sales(request: Request):
     
-        response = wcapi.get("reports/sales?filter[period]=week")
-        
-        reports = response.json()
-        
-        return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
+#     reports = wcapi.get("reports/orders/totals").json()
+#     return templates.TemplateResponse("dashboard.html", {"request": request, "report": reports})
+
+
+# @app.get("/reports", response_class=HTMLResponse)
+# async def get_sales_week(request: Request):
+#     # Suponiendo que wcapi es una instancia configurada para hacer las solicitudes necesarias
+#     reports = wcapi.get("reports/sales?date_min=2024-03-03&date_max=2024-03-04").json()
     
+#     print(reports)
+    
+#     return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
+
+@app.get("/dashboard")  # Cambia la ruta aquí
+async def get_monthly_sales(request: Request):
+    try:
+        base_url = "https://rizosfelices.co/wp-json/wc/v3"
+        consumer_key = "ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9"
+        consumer_secret = "cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3"
+        customers = wcapi.get("customers", params={"per_page": 20}).json()
+        orders = wcapi.get("orders", params={"per_page": 20}).json()
+
+        
+        params = {"period": "month"}
+        
+        url = f"{base_url}/reports/sales"
+        
+        response = requests.get(url, params=params, auth=(consumer_key, consumer_secret))
+        
+        if response.status_code == 200:
+            monthly_sales = response.json()
+            print(monthly_sales)
+            
+            return templates.TemplateResponse("dashboard.html", {"request": request, "sales": monthly_sales, "orders": orders, "customers": customers})
+        else:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
