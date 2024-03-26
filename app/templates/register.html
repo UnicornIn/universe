@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="{{ url_for('static', path = '/register.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Universe</title>
+  </head>
+  <body>
+    <header class="header">
+    <nav class="nav">
+        <a href="#" class="logo">Risos Felices</a>
+        <ul class="nav-menu">
+          <li class="nav-menu-item">
+            <a href="https://rizosfelices.co/" class="nav-menu-link">Blog</a>
+          </li>
+          <li class="nav-menu-item">
+            <a href="#" class="nav-menu-link">Contacto</a>
+          </li>
+          <li class="nav-menu-item">
+            <a href="http://127.0.0.1:8000/login#" class="nav-menu-link">Login</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="signup">
+          <form action="http://127.0.0.1:8000/dashboard" class="signup__form" action="http://127.0.0.1:8000/dashboard" method="get">
+            <input type="text" name="first-name" id="first-name" aria-label="First Name" placeholder="First Name" required />
+            <input type="text" name="last-name" id="last-name" aria-label="Last Name" placeholder="Last Name" required />
+            <input type="email" name="email" id="email" aria-label="Email Address" placeholder="Email Address" required />
+            <input type="password" name="password" id="password" aria-label="Password" placeholder="Password" required />
+            <input type="submit" value="Register" aria-label="Submit" />
+          </form>
+        </div>
+      </div>
+    </main>
+    <script>
+      const inputs = document.querySelectorAll("input:not([type='submit'])")
+      
+      inputs.forEach((input) => {
+        input.addEventListener('invalid', addErrorMessage)
+      
+        input.addEventListener('blur', (event) => {
+          input.checkValidity()
+        })
+      
+        input.addEventListener('focus', removeErrorMessage)
+      })
+      
+      function addErrorMessage(e) {
+        var name = e.target.getAttribute('name')
+      
+        var error_icon = document.createElement('span')
+        error_icon.setAttribute('data-id', name)
+        error_icon.classList.add('error-icon')
+        error_icon.innerHTML = 'Looks like this is not an ' + e.target.getAttribute('placeholder') + '.'
+      
+        var error_message = document.createElement('span')
+        error_message.setAttribute('data-id', name)
+        error_message.classList.add('error-message')
+      
+        if (e.target.value == '' || e.target.value == null) error_message.innerHTML = '' + e.target.getAttribute('placeholder') + ' cannot be empty.'
+        else error_message.innerHTML = 'Looks like this is not an ' + e.target.getAttribute('placeholder') + '.'
+      
+        e.target.after(error_message)
+        e.target.after(error_icon)
+      
+        e.target.classList.add('error')
+      }
+      
+      function removeErrorMessage(e) {
+        var elements = document.querySelectorAll("[data-id='" + e.target.getAttribute('name') + "']")
+      
+        elements.forEach((error_element) => {
+          error_element.remove()
+        })
+      
+        e.target.classList.remove('error')
+      }
+    </script>
+  </body>
+</html>
