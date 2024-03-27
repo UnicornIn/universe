@@ -7,22 +7,25 @@ from woocommerce import API as woocommerce
 from woocommerce import API
 from database.connection import execute_query
 import requests
-
+import os
+from dotenv import load_dotenv
 
 
 app = FastAPI()
-app.title = "Mi aplicación con  FastAPI"
-app.version = "0.0.1"
+load_dotenv()
+consumer_key = os.getenv("CONSUMER_KEY")
+consumer_secret = os.getenv("CONSUMER_SECRET")
 
 templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 wcapi = API(
         url="https://rizosfelices.co",
-        consumer_key="ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9",
-        consumer_secret="cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3",
+        consumer_key = consumer_key,
+        consumer_secret = consumer_secret,
         version="wc/v3",
     )
+
 
 fake_users_db = {
     "user@example.com": {
