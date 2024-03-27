@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Request,Query
+from fastapi import FastAPI, Request,Query, Response
 from fastapi import FastAPI, Request,HTTPException
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
@@ -6,9 +6,8 @@ from fastapi.staticfiles import StaticFiles
 from woocommerce import API as woocommerce
 from woocommerce import API
 from database.connection import execute_query
+import io
 import requests
-import os
-from dotenv import load_dotenv
 
 
 app = FastAPI()
@@ -46,7 +45,7 @@ async def show_login(request: Request):
 
 @app.get("/productos", response_class=HTMLResponse)
 async def show_dashboard(request: Request):
-    products = wcapi.get("products", params={"per_page": 30}).json()
+    products = wcapi.get("products").json()
 
     return templates.TemplateResponse("productos.html", {"request": request, "products": products})
 
@@ -182,7 +181,32 @@ async def read_orders():
 #     print(reports)
     
 #     return templates.TemplateResponse("dashboard.html", {"request": request, "reports": reports})
+@app.get("/ventas")  # Cambia la ruta aquí
+async def get_monthly_sales(request: Request):
+    try:
+        base_url = "https://rizosfelices.co/wp-json/wc/v3"
+        consumer_key = "ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9"
+        consumer_secret = "cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3"
 
+        
+        params = {"period": "year"
+                  }
+        
+        url = f"{base_url}/reports/sales"
+        
+        response = requests.get(url, params=params, auth=(consumer_key, consumer_secret))
+        
+        if response.status_code == 200:
+            year = response.json()
+            print(year)
+            
+            return templates.TemplateResponse("ventas.html", {"request": request, "sales": year})
+        else:
+            raise HTTPException(status_code=response.status_code, detail=response.text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    
 @app.get("/dashboard")  # Cambia la ruta aquí
 async def get_monthly_sales(request: Request):
     try:
@@ -193,17 +217,17 @@ async def get_monthly_sales(request: Request):
         orders = wcapi.get("orders", params={"per_page": 20}).json()
 
         
-        params = {"period": "month"}
+        params = {"period": "year"}
         
         url = f"{base_url}/reports/sales"
         
         response = requests.get(url, params=params, auth=(consumer_key, consumer_secret))
         
         if response.status_code == 200:
-            monthly_sales = response.json()
-            print(monthly_sales)
+            year = response.json()
+            print(year)
             
-            return templates.TemplateResponse("dashboard.html", {"request": request, "sales": monthly_sales, "orders": orders, "customers": customers})
+            return templates.TemplateResponse("dashboard.html", {"request": request, "sales": year, "orders": orders, "customers": customers})
         else:
             raise HTTPException(status_code=response.status_code, detail=response.text)
     except Exception as e:

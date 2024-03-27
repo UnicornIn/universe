@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="{{ url_for('static', path = '/dashboard.css') }}" rel="stylesheet" />
+    <link href="{{ url_for('static', path = '/ventas.css') }}" rel="stylesheet" />
 
     <title>DASBOARD</title>
 
@@ -35,9 +35,6 @@
               <a href="ordenes"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a>
             </li>
             <li>
-                <a href="ventas"><i class="fas fa-shopping-cart"></i><span>Ventas</span></a>
-              </li>
-            <li>
               <a href="ajustes"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a>
             </li>
           </ul>
@@ -54,71 +51,42 @@
       <div class="ds-panel">
         <div class="panel-header">
           <div class="icono">
-            <i class="fa-solid fa-home"></i>
+            <i class="fas fa-shopping-cart"></i>
           </div>
-          <h2>Home Dashboard</h2>
-          <div class="search-container">
-            <div class="search-bar">
-              <form action="/customers" method="get">
-                <label for="order-id">Buscar por ID de Orden:</label>
-                <input type="number" id="order-id" name="order_id" required />
-                <i type="submit" class="fas fa-search">Buscar</i>
-              </form>
-            </div>
-          </div>
+          <h2>Ventas</h2>
         </div>
         <div class="ds-panel-content">
           <div class="recent-payments">
-            <div class="container">
-              <div class="box">
-                <div class="top">
-                  <h2>Dia</h2>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 12%;"></div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="top">
-                  <h2>Mes</h2>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: {{ sale_data }}%;"></div>
-                </div>
-              </div>
-              <div class="box">
-                <div class="top">
-                  <h2>Year</h2>
-                </div>
-                <div class="progress-bar">
-                  <div class="progress-fill" style="width: 20%;"></div>
-                </div>
-              </div>
-            </div>
+            
           </div>
-          <div class="title">
-            <h2>Recent Users</h2>
-          </div>
-
+          <h1>Dashboard de Ventas Mensuales</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Ventas Totales</th>
+                <th>Órdenes</th>
+                <th>Descuento</th>
+                <th>Clientes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for date, sale_data in sales[0].totals.items() %}
+                <tr>
+                  <td>{{ date }}</td>
+                  <td>{{ sale_data.sales }}</td>
+                  <td>{{ sale_data.orders }}</td>
+                  <td>{{ sale_data.discount }}</td>
+                  <td>{{ sale_data.customers }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
           <div class="woocommerce-data">
             <table class="customer-table">
               <thead>
                 <tr>
-                  <th>ID de Orden</th>
-                  <th>Cliente</th>
-                  <th>Email del Cliente</th>
-                  <th>Teléfono del Cliente</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for order in orders %}
-                  <tr>
-                    <span><td>{{ order.id }}</td></span>
-                    <td>{{ order.billing.first_name }} {{ order.billing.last_name }}</td>
-                    <td>{{ order.billing.email }}</td>
-                    <td>{{ order.billing.phone }}</td>
-                  </tr>
-                {% endfor %}
+                 
               </tbody>
             </table>
           </div>
