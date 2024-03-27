@@ -43,7 +43,7 @@ async def show_login(request: Request):
 
 @app.get("/productos", response_class=HTMLResponse)
 async def show_dashboard(request: Request):
-    products = wcapi.get("products").json()
+    products = wcapi.get("products", params={"per_page": 30}).json()
 
     return templates.TemplateResponse("productos.html", {"request": request, "products": products})
 
