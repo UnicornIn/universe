@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="style.css" />
-
-    <title>Universe</title>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
       body {
-        background: url("../images/bg-intro-mobile.png"), #ff7a7a;
+        background: url('../images/bg-intro-mobile.png');
         background-position: center;
         background-repeat: repeat;
         font-size: 1em;
-        font-family: "Poppins", sans-serif;
+        font-family: 'Poppins', sans-serif;
       }
       .header {
         background-color: rgba(255, 255, 255, 0.9);
@@ -24,39 +14,48 @@
         top: 0;
         left: 0;
       }
-
+      
       .nav {
         display: flex;
         justify-content: space-between;
         margin: 0 auto;
       }
-
+      
       .nav-link {
         color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
       }
-
+      
       .logo {
         font-size: 30px;
         font-weight: bold;
         padding: 0 40px;
         line-height: 80px;
+        text-decoration: none;
       }
-
       .nav-menu {
         display: flex;
         margin-right: 40px;
         list-style: none;
       }
-
+      
       .nav-menu-item {
         font-size: 18px;
         margin: 0 10px;
         line-height: 80px;
         text-transform: uppercase;
         width: max-content;
+        text-decoration: none;
       }
-
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url(https://images.pexels.com/photos/1055756/pexels-photo-1055756.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2) no-repeat center;
+        background-size: cover;
+      }
+      
+      
       .nav-menu-link {
         background-color: transparent;
         padding: 8px 12px;
@@ -64,15 +63,16 @@
         border-bottom: 2px solid grey;
         border-radius: 50px;
         transition: all 0.5s ease;
+        text-decoration: none;
       }
-
+      
       .nav-menu-link:hover {
         letter-spacing: 3px;
         background-color: #0e0b0b;
         color: #fff;
         box-shadow: #0e0b0b 0px 7px 29px 0px;
       }
-
+      
       .nav-menu-link:active {
         background-color: #0e0b0b;
         color: #fff;
@@ -80,22 +80,22 @@
         transform: translateY(10px);
         transition: 100ms;
       }
-
+      
       @media (min-width: 768px) {
         body {
-          background: url("../images/bg-intro-desktop.png"), #ff7a7a;
+          background: url('../images/bg-intro-desktop.png'), #ff7a7a;
           background-position: center;
           background-repeat: repeat;
         }
       }
-
+      
       *,
       * *,
       *::after,
       *::before {
         box-sizing: border-box;
       }
-
+      
       main {
         min-height: 100vh;
         max-width: min(100vw, 600px);
@@ -117,7 +117,7 @@
           width: 50%;
         }
       }
-
+      
       .content {
         color: white;
         text-align: center;
@@ -136,7 +136,7 @@
           font-size: 2.5em;
         }
       }
-
+      
       .signup {
         padding: 1em;
         text-align: center;
@@ -145,12 +145,12 @@
         flex-direction: column;
         flex-wrap: nowrap;
       }
-
+      
       .signup__pricing,
       .signup__form {
         border-radius: 8px;
       }
-
+      
       .signup__pricing {
         box-shadow: 0px 0.45em 0px 0px #df6d6d;
         background-color: #6055a5;
@@ -159,7 +159,7 @@
         color: white;
         font-size: 0.8em;
       }
-
+      
       .signup__form {
         box-shadow: 0px 0.45em 0px 0px #df6d6d;
         background-color: white;
@@ -174,7 +174,7 @@
         font-family: inherit;
         font-weight: bolder;
       }
-      .signup__form input:not([type="submit"]) {
+      .signup__form input:not([type='submit']) {
         border: 1px solid #e4e2e2;
         border-radius: 4px;
       }
@@ -201,8 +201,8 @@
       .signup__form input.error {
         border: 2px solid #ff7a7a;
       }
-
-      input[type="submit"] {
+      
+      input[type='submit'] {
         box-shadow: 0px 0.3em 0px 0px #2fb179;
         border: none;
         border-radius: 4px;
@@ -214,11 +214,11 @@
         padding-top: 6px;
         cursor: pointer;
       }
-      input[type="submit"]:hover {
+      input[type='submit']:hover {
         box-shadow: 0px 0.3em 0px 0px #38cc8c;
         background-color: #44e49f;
       }
-
+      
       .terms-notice {
         display: block;
         margin-top: 1em;
@@ -230,7 +230,7 @@
         color: #ff7a7a;
         font-weight: bolder;
       }
-
+      
       footer {
         text-align: center;
         color: white;
@@ -239,125 +239,3 @@
       footer a {
         color: inherit;
       }
-    </style>
-  </head>
-  <body>
-    <header class="header">
-      <nav class="nav">
-        <a href="#" class="logo">Risos Felices</a>
-        <ul class="nav-menu">
-          <li class="nav-menu-item">
-            <a href="https://rizosfelices.co/" class="nav-menu-link">Blog</a>
-          </li>
-          <li class="nav-menu-item">
-            <a href="#" class="nav-menu-link">Contacto</a>
-          </li>
-          <li class="nav-menu-item">
-            <a href="http://127.0.0.1:8000/login#" class="nav-menu-link"
-              >Register</a
-            >
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <div class="signup">
-        <form
-          action="http://127.0.0.1:8000/dashboard"
-          class="signup__form"
-          action="http://127.0.0.1:8000/dashboard"
-          method="get"
-        >
-          <input
-            type="text"
-            name="first-name"
-            id="first-name"
-            aria-label="First Name"
-            placeholder="First Name"
-            required
-          />
-          <input
-            type="text"
-            name="last-name"
-            id="last-name"
-            aria-label="Last Name"
-            placeholder="Last Name"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            id="email"
-            aria-label="Email Address"
-            placeholder="Email Address"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            id="password"
-            aria-label="Password"
-            placeholder="Password"
-            required
-          />
-          <input type="submit" value="Register" aria-label="Submit" />
-        </form>
-      </div>
-    </main>
-    <script>
-      const inputs = document.querySelectorAll("input:not([type='submit'])");
-
-      inputs.forEach((input) => {
-        input.addEventListener("invalid", addErrorMessage);
-
-        input.addEventListener("blur", (event) => {
-          input.checkValidity();
-        });
-
-        input.addEventListener("focus", removeErrorMessage);
-      });
-
-      function addErrorMessage(e) {
-        var name = e.target.getAttribute("name");
-
-        var error_icon = document.createElement("span");
-        error_icon.setAttribute("data-id", name);
-        error_icon.classList.add("error-icon");
-        error_icon.innerHTML =
-          "Looks like this is not an " +
-          e.target.getAttribute("placeholder") +
-          ".";
-
-        var error_message = document.createElement("span");
-        error_message.setAttribute("data-id", name);
-        error_message.classList.add("error-message");
-
-        if (e.target.value == "" || e.target.value == null)
-          error_message.innerHTML =
-            "" + e.target.getAttribute("placeholder") + " cannot be empty.";
-        else
-          error_message.innerHTML =
-            "Looks like this is not an " +
-            e.target.getAttribute("placeholder") +
-            ".";
-
-        e.target.after(error_message);
-        e.target.after(error_icon);
-
-        e.target.classList.add("error");
-      }
-
-      function removeErrorMessage(e) {
-        var elements = document.querySelectorAll(
-          "[data-id='" + e.target.getAttribute("name") + "']"
-        );
-
-        elements.forEach((error_element) => {
-          error_element.remove();
-        });
-
-        e.target.classList.remove("error");
-      }
-    </script>
-  </body>
-</html>
