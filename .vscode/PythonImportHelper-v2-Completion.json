@@ -9,6 +9,30 @@
         "documentation": {}
     },
     {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
         "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
@@ -17,7 +41,39 @@
         "documentation": {}
     },
     {
-        "label": "requests",
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -26,6 +82,86 @@
     },
     {
         "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Response",
         "importPath": "fastapi",
         "description": "fastapi",
         "isExtraImport": true,
@@ -57,59 +193,19 @@
         "documentation": {}
     },
     {
-        "label": "Depends",
-        "importPath": "fastapi",
-        "description": "fastapi",
+        "label": "OAuth2PasswordBearer",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
         "isExtraImport": true,
-        "detail": "fastapi",
+        "detail": "fastapi.security",
         "documentation": {}
     },
     {
-        "label": "Query",
-        "importPath": "fastapi",
-        "description": "fastapi",
+        "label": "OAuth2PasswordRequestForm",
+        "importPath": "fastapi.security",
+        "description": "fastapi.security",
         "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "FastAPI",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Request",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "Form",
-        "importPath": "fastapi",
-        "description": "fastapi",
-        "isExtraImport": true,
-        "detail": "fastapi",
-        "documentation": {}
-    },
-    {
-        "label": "HTMLResponse",
-        "importPath": "fastapi.responses",
-        "description": "fastapi.responses",
-        "isExtraImport": true,
-        "detail": "fastapi.responses",
-        "documentation": {}
-    },
-    {
-        "label": "HTMLResponse",
-        "importPath": "fastapi.responses",
-        "description": "fastapi.responses",
-        "isExtraImport": true,
-        "detail": "fastapi.responses",
+        "detail": "fastapi.security",
         "documentation": {}
     },
     {
@@ -121,11 +217,19 @@
         "documentation": {}
     },
     {
-        "label": "Jinja2Templates",
-        "importPath": "fastapi.templating",
-        "description": "fastapi.templating",
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
         "isExtraImport": true,
-        "detail": "fastapi.templating",
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "StaticFiles",
+        "importPath": "fastapi.staticfiles",
+        "description": "fastapi.staticfiles",
+        "isExtraImport": true,
+        "detail": "fastapi.staticfiles",
         "documentation": {}
     },
     {
@@ -150,105 +254,177 @@
         "description": "database.connection",
         "isExtraImport": true,
         "detail": "database.connection",
+        "documentation": {}
+    },
+    {
+        "label": "io",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "io",
+        "description": "io",
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
         "documentation": {}
     },
     {
         "label": "authenticate_user",
         "kind": 2,
-        "importPath": "autenticacion.auth",
-        "description": "autenticacion.auth",
+        "importPath": "api.autenticacion.auth",
+        "description": "api.autenticacion.auth",
         "peekOfCode": "def authenticate_user(username: str, password: str) -> bool:\n    conn = mysql.connector.connect(\n        host=\"tu_host\",\n        user=\"tu_usuario\",\n        password=\"tu_contraseña\",\n        database=\"tu_base_de_datos\"\n    )\n    cursor = conn.cursor()\n    query = \"SELECT password FROM users WHERE username = %s\"\n    cursor.execute(query, (username,))",
-        "detail": "autenticacion.auth",
+        "detail": "api.autenticacion.auth",
         "documentation": {}
     },
     {
-        "label": "execute_query",
-        "kind": 2,
-        "importPath": "database.connection",
-        "description": "database.connection",
-        "peekOfCode": "def execute_query(query):\n    try:\n        conectar = mysql.connector.connect(\n            user='root',\n            password='JuanEstebanRiveroRoche',\n            host='localhost',\n            database='customers',\n            port='3306'\n        )\n        cursor = conectar.cursor()",
-        "detail": "database.connection",
+        "label": "User",
+        "kind": 6,
+        "importPath": "api.autenticacion.models",
+        "description": "api.autenticacion.models",
+        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    password: str\nclass Token(BaseModel):\n    access_token: str\n    token_type: str",
+        "detail": "api.autenticacion.models",
+        "documentation": {}
+    },
+    {
+        "label": "Token",
+        "kind": 6,
+        "importPath": "api.autenticacion.models",
+        "description": "api.autenticacion.models",
+        "peekOfCode": "class Token(BaseModel):\n    access_token: str\n    token_type: str",
+        "detail": "api.autenticacion.models",
         "documentation": {}
     },
     {
         "label": "router",
         "kind": 5,
-        "importPath": "routers.auth",
-        "description": "routers.auth",
-        "peekOfCode": "router = APIRouter()\ntemplates = Jinja2Templates(directory=\"main/templates\")\n@router.get(\"/login\", response_class=HTMLResponse)   \nasync def show_login(request:requests.Request):\n    return templates.TemplateResponse(\"login.html\", {\"request\": request})\n@router.get(\"/register\", response_class=HTMLResponse)   \nasync def show_register(request:requests.Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
-        "detail": "routers.auth",
+        "importPath": "api.autenticacion.routers",
+        "description": "api.autenticacion.routers",
+        "peekOfCode": "router = APIRouter()\noauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/api/auth/login\")\n@router.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends(), request: Request):\n    user = get_user(form_data.username)\n    if not user or not password_context.verify(form_data.password, user.password):\n        raise HTTPException(status_code=400, detail=\"Incorrect username or password\")\n    token = generate_access_token(user)\n    return {\"access_token\": token, \"token_type\": \"bearer\"}\n@router.get(\"/me\")",
+        "detail": "api.autenticacion.routers",
         "documentation": {}
     },
     {
-        "label": "templates",
+        "label": "oauth2_scheme",
         "kind": 5,
-        "importPath": "routers.auth",
-        "description": "routers.auth",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"main/templates\")\n@router.get(\"/login\", response_class=HTMLResponse)   \nasync def show_login(request:requests.Request):\n    return templates.TemplateResponse(\"login.html\", {\"request\": request})\n@router.get(\"/register\", response_class=HTMLResponse)   \nasync def show_register(request:requests.Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
-        "detail": "routers.auth",
+        "importPath": "api.autenticacion.routers",
+        "description": "api.autenticacion.routers",
+        "peekOfCode": "oauth2_scheme = OAuth2PasswordBearer(tokenUrl=\"/api/auth/login\")\n@router.post(\"/login\")\nasync def login(form_data: OAuth2PasswordRequestForm = Depends(), request: Request):\n    user = get_user(form_data.username)\n    if not user or not password_context.verify(form_data.password, user.password):\n        raise HTTPException(status_code=400, detail=\"Incorrect username or password\")\n    token = generate_access_token(user)\n    return {\"access_token\": token, \"token_type\": \"bearer\"}\n@router.get(\"/me\")\nasync def get_current_user(token: str = Depends(oauth2_scheme)):",
+        "detail": "api.autenticacion.routers",
+        "documentation": {}
+    },
+    {
+        "label": "Product",
+        "kind": 6,
+        "importPath": "api.productos.models",
+        "description": "api.productos.models",
+        "peekOfCode": "class Product(BaseModel):\n    name: str\n    description: str\n    price: float\n    quantity: int",
+        "detail": "api.productos.models",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "api.productos.routers",
+        "description": "api.productos.routers",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/\")\nasync def create_product(request: Request, product_data: Product = Depends()):\n    product = create_product(product_data)\n    return {\"success\": True, \"product\": product}\n@router.get(\"/{product_id}\")\nasync def get_product(product_id: int):\n    return get_product(product_id)",
+        "detail": "api.productos.routers",
+        "documentation": {}
+    },
+    {
+        "label": "User",
+        "kind": 6,
+        "importPath": "api.usuarios.models",
+        "description": "api.usuarios.models",
+        "peekOfCode": "class User(BaseModel):\n    username: str\n    email: str\n    full_name: str\n    is_active: bool",
+        "detail": "api.usuarios.models",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "api.usuarios.routers",
+        "description": "api.usuarios.routers",
+        "peekOfCode": "router = APIRouter()\n@router.post(\"/\")\nasync def create_user(request: Request, user_data: User = Depends()):\n    user = create_user(user_data)\n    return {\"success\": True, \"user\": user}\n@router.get(\"/{username}\")\nasync def get_user(username: str):\n    user = get_user(username)\n    if not user:\n        raise HTTPException(status_code=404, detail=\"User not found\")",
+        "detail": "api.usuarios.routers",
+        "documentation": {}
+    },
+    {
+        "label": "execute_query",
+        "kind": 2,
+        "importPath": "app.database.connection",
+        "description": "app.database.connection",
+        "peekOfCode": "def execute_query(query):\n    try:\n        conectar = mysql.connector.connect(\n            user='root',\n            password='JuanEstebanRiveroRoche',\n            host='localhost',\n            database='customers',\n            port='3306'\n        )\n        cursor = conectar.cursor()",
+        "detail": "app.database.connection",
         "documentation": {}
     },
     {
         "label": "save_customer_to_database",
         "kind": 2,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "def save_customer_to_database(customer):\n    # Formatear la consulta SQL para insertar el cliente en la tabla customers\n    query = f\"INSERT INTO customers (first_name, last_name, email, phone) VALUES ('{customer['first_name']}', '{customer['last_name']}', '{customer['email']}', '{customer['phone']}')\"\n    # Ejecutar la consulta\n    execute_query(query)\n\"\"\"@app.get(\"/customers\", response_class=HTMLResponse)\nasync def get_customers( \n    request: Request,\n    order_id: int = Query (None, alias= \"order_id\")\n):",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "def save_customer_to_database(customer):\n    # Formatear la consulta SQL para insertar el cliente en la tabla customers\n    query = f\"INSERT INTO customers (first_name, last_name, email, phone) VALUES ('{customer['first_name']}', '{customer['last_name']}', '{customer['email']}', '{customer['phone']}')\"\n    # Ejecutar la consulta\n    execute_query(query)\n@app.get(\"/customers\")\nasync def get_customers_from_orders( request :Request ,\n    order_id: int = Query(None, alias=\"order_id\")\n):\n    if order_id:",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "app",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "app = FastAPI()\napp.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app = FastAPI()\napp.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "app.title",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "app.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "app.version",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "app.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "app.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "templates",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
-        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",",
-        "detail": "main",
+        "importPath": "app.main",
+        "description": "app.main",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\napp.mount(\"/static\", StaticFiles(directory=\"static\"), name=\"static\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "wcapi",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "wcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",\n        \"password\": \"password\",",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     },
     {
         "label": "fake_users_db",
         "kind": 5,
-        "importPath": "main",
-        "description": "main",
+        "importPath": "app.main",
+        "description": "app.main",
         "peekOfCode": "fake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",\n        \"password\": \"password\",\n        \"full_name\": \"Usuario de Ejemplo\",\n    }\n}\n@app.get(\"/register\", response_class=HTMLResponse)\nasync def show_register(request: Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
-        "detail": "main",
+        "detail": "app.main",
         "documentation": {}
     }
 ]

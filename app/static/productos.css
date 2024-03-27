@@ -10,7 +10,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-y: scroll;
 }
 
 body {
@@ -79,7 +78,7 @@ a {
 
 .ds-left-menu {
     background: var(--color-1);
-    /*height: 100vh;*/
+    height: 100vh;
     color: #fff;
     width: 250px;
     position: relative;
@@ -324,7 +323,6 @@ ESTILOS PANEL RIGHT
     width: calc(100% - 250px);
     padding: 20px;
     background: var(--color-3);
-    
 }
 
 .ds-panel.tab-menu {
