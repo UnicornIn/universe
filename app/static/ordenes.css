@@ -10,6 +10,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    
 }
 
 body {
@@ -375,6 +376,7 @@ h1 {
     width: calc(100% - 250px);
     padding: 20px;
     background: var(--color-3);
+    
 }
 
 .ds-panel.tab-menu {
