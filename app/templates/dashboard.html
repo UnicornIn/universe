@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="{{ url_for('static', path = '/dashboard.css') }}" rel="stylesheet" />
+
+    <title>DASBOARD</title>
+
+    <!-- FUENTE GOOGLE FONTS : Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+
+  <body>
+    <div class="admin-dashboard">
+      <div class="ds-left-menu">
+        <button class="btn-menu"><i class="fa-solid fa-circle-chevron-left"></i></button>
+
+        <div class="ds-perfil">
+          <div class="info-perfil">
+            <span>Admin</span>
+            <h3>Juan</h3>
+          </div>
+        </div>
+
+        <div class="ds-menu">
+          <ul>
+            <li>
+              <a href="dashboard"><i class="fa-solid fa-home"></i><span>Home</span></a>
+            </li>
+            <li>
+              <a href="productos"><i class="fa-solid fa-truck-fast"></i><span>Productos</span></a>
+            </li>
+            <li>
+              <a href="ordenes"><i class="fa-solid fa-basket-shopping"></i><span>Ordenes</span></a>
+            </li>
+            <li>
+              <a href="ajustes"><i class="fa-solid fa-sliders"></i><span>Ajustes</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sign-off">
+          <a href="login" class="btn-sign-off">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+            <span>Cerrar Sesión</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="ds-panel">
+        <div class="panel-header">
+          <div class="icono">
+            <i class="fa-solid fa-home"></i>
+          </div>
+          <h2>Home Dashboard</h2>
+          <div class="search-container">
+            <div class="search-bar">
+              <form action="/customers" method="get">
+                <label for="order-id">Buscar por ID de Orden:</label>
+                <input type="number" id="order-id" name="order_id" required />
+                <i type="submit" class="fas fa-search">Buscar</i>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="ds-panel-content">
+          <div class="recent-payments">
+            <div class="container">
+              <div class="box">
+                <div class="top">
+                  <h2>Dia</h2>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 12%;"></div>
+                </div>
+              </div>
+              <div class="box">
+                <div class="top">
+                  <h2>Mes</h2>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: {{ sale_data }}%;"></div>
+                </div>
+              </div>
+              <div class="box">
+                <div class="top">
+                  <h2>Year</h2>
+                </div>
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 20%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h1>Dashboard de Ventas Mensuales</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Ventas</th>
+                <th>Órdenes</th>
+                <th>Impuestos</th>
+                <th>Envío</th>
+                <th>Descuento</th>
+                <th>Clientes</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for date, sale_data in sales[0].totals.items() %}
+                <tr>
+                  <td>{{ date }}</td>
+                  <td>{{ sale_data.sales }}</td>
+                  <td>{{ sale_data.orders }}</td>
+                  <td>{{ sale_data.tax }}</td>
+                  <td>{{ sale_data.shipping }}</td>
+                  <td>{{ sale_data.discount }}</td>
+                  <td>{{ sale_data.customers }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <div class="title">
+            <h2>Recent Users</h2>
+          </div>
+
+          <div class="woocommerce-data">
+            <table class="customer-table">
+              <thead>
+                <tr>
+                  <th>ID de Orden</th>
+                  <th>Cliente</th>
+                  <th>Email del Cliente</th>
+                  <th>Teléfono del Cliente</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                  <tr>
+                    <span><td>{{ order.id }}</td></span>
+                    <td>{{ order.billing.first_name }} {{ order.billing.last_name }}</td>
+                    <td>{{ order.billing.email }}</td>
+                    <td>{{ order.billing.phone }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/075922b03a.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const btnMenu = document.querySelector('.btn-menu')
+      
+        btnMenu.addEventListener('click', () => {
+          document.querySelector('.ds-left-menu').classList.toggle('menu-active')
+          document.querySelector('.ds-panel').classList.toggle('tab-menu')
+        })
+      })
+    </script>
+  </body>
+</html>

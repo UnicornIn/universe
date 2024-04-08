@@ -1,0 +1,254 @@
+[
+    {
+        "label": "mysql.connector",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "mysql.connector",
+        "description": "mysql.connector",
+        "detail": "mysql.connector",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Query",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Request",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Form",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
+        "documentation": {}
+    },
+    {
+        "label": "Jinja2Templates",
+        "importPath": "fastapi.templating",
+        "description": "fastapi.templating",
+        "isExtraImport": true,
+        "detail": "fastapi.templating",
+        "documentation": {}
+    },
+    {
+        "label": "API",
+        "importPath": "woocommerce",
+        "description": "woocommerce",
+        "isExtraImport": true,
+        "detail": "woocommerce",
+        "documentation": {}
+    },
+    {
+        "label": "API",
+        "importPath": "woocommerce",
+        "description": "woocommerce",
+        "isExtraImport": true,
+        "detail": "woocommerce",
+        "documentation": {}
+    },
+    {
+        "label": "execute_query",
+        "importPath": "database.connection",
+        "description": "database.connection",
+        "isExtraImport": true,
+        "detail": "database.connection",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate_user",
+        "kind": 2,
+        "importPath": "autenticacion.auth",
+        "description": "autenticacion.auth",
+        "peekOfCode": "def authenticate_user(username: str, password: str) -> bool:\n    conn = mysql.connector.connect(\n        host=\"tu_host\",\n        user=\"tu_usuario\",\n        password=\"tu_contraseña\",\n        database=\"tu_base_de_datos\"\n    )\n    cursor = conn.cursor()\n    query = \"SELECT password FROM users WHERE username = %s\"\n    cursor.execute(query, (username,))",
+        "detail": "autenticacion.auth",
+        "documentation": {}
+    },
+    {
+        "label": "execute_query",
+        "kind": 2,
+        "importPath": "database.connection",
+        "description": "database.connection",
+        "peekOfCode": "def execute_query(query):\n    try:\n        conectar = mysql.connector.connect(\n            user='root',\n            password='JuanEstebanRiveroRoche',\n            host='localhost',\n            database='customers',\n            port='3306'\n        )\n        cursor = conectar.cursor()",
+        "detail": "database.connection",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "routers.auth",
+        "description": "routers.auth",
+        "peekOfCode": "router = APIRouter()\ntemplates = Jinja2Templates(directory=\"main/templates\")\n@router.get(\"/login\", response_class=HTMLResponse)   \nasync def show_login(request:requests.Request):\n    return templates.TemplateResponse(\"login.html\", {\"request\": request})\n@router.get(\"/register\", response_class=HTMLResponse)   \nasync def show_register(request:requests.Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
+        "detail": "routers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "routers.auth",
+        "description": "routers.auth",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"main/templates\")\n@router.get(\"/login\", response_class=HTMLResponse)   \nasync def show_login(request:requests.Request):\n    return templates.TemplateResponse(\"login.html\", {\"request\": request})\n@router.get(\"/register\", response_class=HTMLResponse)   \nasync def show_register(request:requests.Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
+        "detail": "routers.auth",
+        "documentation": {}
+    },
+    {
+        "label": "save_customer_to_database",
+        "kind": 2,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "def save_customer_to_database(customer):\n    # Formatear la consulta SQL para insertar el cliente en la tabla customers\n    query = f\"INSERT INTO customers (first_name, last_name, email, phone) VALUES ('{customer['first_name']}', '{customer['last_name']}', '{customer['email']}', '{customer['phone']}')\"\n    # Ejecutar la consulta\n    execute_query(query)\n\"\"\"@app.get(\"/customers\", response_class=HTMLResponse)\nasync def get_customers( \n    request: Request,\n    order_id: int = Query (None, alias= \"order_id\")\n):",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app = FastAPI()\napp.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app.title",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app.title = \"Mi aplicación con  FastAPI\"\napp.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "app.version",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "app.version = \"0.0.1\"\ntemplates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "templates",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "templates = Jinja2Templates(directory=\"templates\")\nwcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "wcapi",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "wcapi = API(\n        url=\"https://rizosfelices.co\",\n        consumer_key=\"ck_71555cb7c8c3489cf2ea8b231cff6ea704001ac9\",\n        consumer_secret=\"cs_8cb1c962a51cd4feac1894987d5d8ccd5aa078f3\",\n        version=\"wc/v3\",\n    )\nfake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",\n        \"password\": \"password\",",
+        "detail": "main",
+        "documentation": {}
+    },
+    {
+        "label": "fake_users_db",
+        "kind": 5,
+        "importPath": "main",
+        "description": "main",
+        "peekOfCode": "fake_users_db = {\n    \"user@example.com\": {\n        \"username\": \"user@example.com\",\n        \"password\": \"password\",\n        \"full_name\": \"Usuario de Ejemplo\",\n    }\n}\n@app.get(\"/register\", response_class=HTMLResponse)\nasync def show_register(request: Request):\n    return templates.TemplateResponse(\"register.html\", {\"request\": request})",
+        "detail": "main",
+        "documentation": {}
+    }
+]
